@@ -1,0 +1,38 @@
+<h1>Ingrese aqui el código que busca</h1>
+
+<hr>
+
+<form class="form-inline my-2 my-lg-0">
+    <input  class="form-control mr-sm-2" 
+            type="search" 
+            placeholder="código" 
+            aria-label="Buscar código" 
+            (keyup.enter)="buscarCodigo( textoBuscar.value )"
+            #textoBuscar>
+    <button class="btn btn-outline-success my-2 my-sm-0" 
+            type="button"
+            (click)="buscarCodigo( textoBuscar.value )">Buscar</button>
+</form>
+
+<hr>
+
+<div class="card animated fadeIn fast" style="width: 40rem;">
+
+    <img *ngIf=" !codigo " [src]="sinimagen" class="card-img-top" alt="...">
+    <!-- <img *ngIf=" codigo  " [src]="image" class="card-img-top" [alt]="codigo"> -->
+    <img *ngIf=" codigo  " src="//prod.kinetik.cl/jmimport/img/{{ image }}.jpg" class="card-img-top" [alt]="codigo">
+
+    <div class="card-body">
+      <h5 class="card-title">{{ codigo }}</h5>
+      <p class="card-text">{{ description }}</p>
+    </div>
+
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">{{ name }}</li>
+      <li class="list-group-item">{{ size }}</li>
+      <li class="list-group-item">{{ edad }}</li>
+      <li class="list-group-item">{{ brand }}</li>
+    </ul>
+
+</div>
+
