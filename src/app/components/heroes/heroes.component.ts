@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { HeroesService } from 'src/app/servicios/heroes.service';
-import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-heroes',
@@ -10,7 +10,7 @@ export class HeroesComponent implements OnInit {
 
   data: any;
 
-  codigo      = '';   /* CORAEDU001 */
+  public codigo = '';   /* CORAEDU001 */
   name        = '';
   description = '';  ficha = '';
   edad        = '';
@@ -49,16 +49,24 @@ export class HeroesComponent implements OnInit {
     this.brand  = this.data.brand;
     this.size   = this.data.size;
     this.image  = this.data.images;
+    // listo el foco  /* CORAEDU001 */
   }
 
-  buscarCodigo( textoBuscar ) {
+  buscarCodigo() {
+    const textoBuscar = this.codigo.toUpperCase();
+    console.log( this.codigo );
     this.hServe.irPorCodigo( textoBuscar )
         .subscribe( (item: any) => { console.log(item);
                                      item.images = item.images[0].original;
                                      this.data = item;
                                      this.cargaData(); },
                           (err) => { this.data = this.NoExiste;
+                                     this.data.name = 'codigo no existe ==>> ' + textoBuscar ;
                                      this.cargaData(); } );
+  }
+
+  scanCodigo() {
+
   }
 
 }

@@ -3,15 +3,19 @@
 <hr>
 
 <form class="form-inline my-2 my-lg-0">
-    <input  class="form-control mr-sm-2" 
-            type="search" 
-            placeholder="código" 
-            aria-label="Buscar código" 
-            (keyup.enter)="buscarCodigo( textoBuscar.value )"
-            #textoBuscar>
-    <button class="btn btn-outline-success my-2 my-sm-0" 
-            type="button"
-            (click)="buscarCodigo( textoBuscar.value )">Buscar</button>
+        <input  class="form-control mr-sm-2" 
+                type="search" 
+                name="codigo"
+                ngModel="codigo"
+                placeholder="código" 
+                aria-label="Buscar código" 
+                (keyup.enter)="buscarCodigo()">
+        <button class="btn btn-outline-success my-2 my-sm-0" 
+                type="button"
+                (click)="buscarCodigo( codigo )">Buscar</button>
+        <button class="btn btn-outline-success my-2 my-sm-0" 
+                type="button"
+                (click)="scanCodigo()">Barr-Scan</button>
 </form>
 
 <hr>
@@ -19,7 +23,6 @@
 <div class="card animated fadeIn fast" style="width: 40rem;">
 
     <img *ngIf=" !codigo " [src]="sinimagen" class="card-img-top" alt="...">
-    <!-- <img *ngIf=" codigo  " [src]="image" class="card-img-top" [alt]="codigo"> -->
     <img *ngIf=" codigo  " src="//prod.kinetik.cl/jmimport/img/{{ image }}.jpg" class="card-img-top" [alt]="codigo">
 
     <div class="card-body">
